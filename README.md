@@ -1,4 +1,5 @@
 # Learning Laravel 5, 6th Edition
+https://learninglaravel.net/books/laravel
 
 Learning Laravel 5: Building Applications with Bootstrap 4 is the easiest way to learn web development using Laravel. Throughout 5 chapters, instructor Nathan Wu will teach you how to build many real-world applications from scratch. This bestseller is also completely about you. It has been structured very carefully, teaching you all you need to know from installing your Laravel 5 app to deploying it to a live server.
 
