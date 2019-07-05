@@ -17,4 +17,21 @@ Route::get('/home', 'PagesController@home');
 
 Route::get('/about', 'PagesController@about');
 
-Route::get('/contact', 'PagesController@contact');
+Route::get('/contact', 'TicketsController@create');
+
+Route::post('/contact', 'TicketsController@store');
+
+Route::get('/tickets', 'TicketsController@index');
+
+Route::prefix('/ticket')->group(function () {
+	Route::prefix('/{slug?}')->group(function () {
+		Route::get('/edit','TicketsController@edit');
+		Route::post('/edit','TicketsController@update');
+		Route::post('/delete','TicketsController@destroy');
+	});
+
+	Route::get('/{slug?}', 'TicketsController@show');
+
+});
+
+Route::post('/comment', 'CommentsController@newComment');
