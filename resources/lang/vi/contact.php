@@ -12,6 +12,7 @@ return [
     |
     */
 
-    'title' => 'Contact Page',
-    'quote' => 'Our contact page!',
+    'title' => 'Trang Liên Hệ',
+    'head' => 'Trang Liên Hệ',
+    'quote' => 'Trang Liên Hệ Chính Thức',
 ];
