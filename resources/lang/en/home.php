@@ -11,18 +11,6 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'title' => 'Home Page',
-    'navbar' => 'Navbar',
-    'home' => 'Home',
-    'link' => 'Link',
-    'dropdown' => 'Dropdown',
-    'action' => 'Action',
-    'another' => 'Another Action',
-    'else' => 'Something else here',
-    'disable' => 'Disabled',
-    'hold' => 'Search',
-    'search' => 'Search',
-    'head' => 'Home Page',
-    'quote' => 'Our Home Page!',
+    'head' => 'Learning Laravel 5',
+    'content' => 'Building Practical Applications',
 ];

@@ -1,4 +1,5 @@
 <?php
+
 return [
 
     /*
@@ -12,6 +13,11 @@ return [
     |
     */
 
-    'title' => 'Contact Page',
-    'quote' => 'Our contact page!',
+    'larabook' => 'Larabook',
+    'home' => 'Home',
+    'about' => 'About',
+    'contact' => 'Contact',
+    'member' => 'Member',
+    'register' => 'Register',
+    'login' => 'Login',
 ];

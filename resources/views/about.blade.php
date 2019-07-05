@@ -1,17 +1,12 @@
-<html>
-    <head>
-        <title>{{ trans('about.title') }}</title>
+@extends('master')
+@section('title', 'About')
 
-        <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-        
-        <link href="{{ asset('css/about.css') }}" rel='stylesheet' type='text/css'>    
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">{{ trans('about.head') }}</div>
-                <div class="quote">{{ trans('about.quote') }}</div>
-            </div>
+@section('content')
+    <div class="container">
+        <div class="content">
+            <div class="title">{{ trans('about.title') }}</div>
+            <div class="quote">{{ trans('about.quote') }}</div>
         </div>
-    </body>
-</html>
+    </div>
+@endsection
+
