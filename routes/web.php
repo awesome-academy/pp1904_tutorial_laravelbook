@@ -12,5 +12,21 @@
 */
 
 Route::get('/', 'PagesController@home');
+
 Route::get('/about', 'PagesController@about');
+
 Route::get('/contact', 'TicketsController@create');
+
+Route::post('/contact', 'TicketsController@store');
+   
+Route::prefix('tickets')->group(function (){
+    Route::get('/', 'TicketsController@index');  
+
+    Route::prefix('{slug?}')->group(function (){
+        Route::get('/', 'TicketsController@show');
+
+        Route::get('/edit','TicketsController@edit');
+        Route::post('/edit','TicketsController@update');
+        Route::post('/delete','TicketsController@destroy');
+    });
+});
