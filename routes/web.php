@@ -35,3 +35,7 @@ Route::prefix('/ticket')->group(function () {
 });
 
 Route::post('/comment', 'CommentsController@newComment');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

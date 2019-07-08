@@ -1,4 +1,5 @@
-@extends('master')
+@extends('layouts.app')
+
 @section('title', 'Edit a ticket')
 
 @section('content')

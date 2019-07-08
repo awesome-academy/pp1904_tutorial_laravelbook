@@ -100,9 +100,9 @@ class TicketsController extends Controller
         $ticket->title = $request->get('title');
         $ticket->content = $request->get('content');
         if($request->get('status') != null) {
-            $ticket->status = 0;
+            $ticket->status = config('ticket.statusOff');
         } else {
-            $ticket->status = 1;
+            $ticket->status = config('ticket.statusOn');
         }
         $ticket->save();
 
