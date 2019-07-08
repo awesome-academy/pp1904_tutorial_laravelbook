@@ -1,46 +1,72 @@
-# Learning Laravel 5, 6th Edition
-https://learninglaravel.net/books/laravel
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-Learning Laravel 5: Building Applications with Bootstrap 4 is the easiest way to learn web development using Laravel. Throughout 5 chapters, instructor Nathan Wu will teach you how to build many real-world applications from scratch. This bestseller is also completely about you. It has been structured very carefully, teaching you all you need to know from installing your Laravel 5 app to deploying it to a live server.
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-When you have completed this book you will have created a dynamic website and have a good knowledge to become a good web developer.
+## About Laravel
 
-We first start with the basics. You will learn some main concepts and create a simple website. After that, we progress to building more advanced web applications.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-Learn by doing!
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-If you’re looking for a genuinely effective book that helps you to build your next amazing applications, this is the number one book for you.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-# Requirements
-The projects in this book are intended to help people who have grasped the basics of PHP and HTML to move forward, developing more complex projects, using Laravel advanced techniques. The fundamentals of the PHP are not covered, you will need to:
-- Have a basic knowledge of PHP, HTML, CSS.
-- Love Laravel, like we do.
+## Learning Laravel
 
-# What You Will Get
-Lifetime access to the online book. (Read 70% of the book for FREE!)
-- Digital books: PDF, MOBI, EPUB (Premium Only)
-- Full source code (Premium Only)
-- Access new chapters of the book while it's being written (Premium Only)
-- A community of 100000+ students learning together.
-- Amazing bundles and freebies to help you become a successful developer.
-- iPhone, iPad and Android Accessibility.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-# Book Structure
-Note: This book is still under active development, that means some chapters and its content may change. The book also may have some errors and bugs. For any feedback, please send us an email. Thank you.
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Chapter 1 - Installing Laravel
-There are many ways to install Laravel. In this chapter, you will learn how to setup Laravel Homestead (a Vagrant-based virtual machine), and run your Laravel projects on it.
+## Laravel Sponsors
 
-## Chapter 2 - Building Our First Website
-This book is meant to help you build the skills to create web applications as quickly and reliably as possible. We present you with four projects in various states of completion to explain and practice the various concepts being presented. Our first app, which is a simple website, will walk you through the structure of a Laravel app, and show some main concepts of Laravel. You will also create a good template for our next applications.
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-## Chapter 3 - Building A Support Ticket System
-After having a good template, we will start building a support ticket system to learn some Laravel features, such as Eloquent ORM, Eloquent Relationships, Migrations, Requests, Laravel Collective, sending emails, etc.
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[British Software Development](https://www.britishsoftware.co)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- [UserInsights](https://userinsights.com)
+- [Fragrantica](https://www.fragrantica.com)
+- [SOFTonSOFA](https://softonsofa.com/)
+- [User10](https://user10.com)
+- [Soumettre.fr](https://soumettre.fr/)
+- [CodeBrisk](https://codebrisk.com)
+- [1Forge](https://1forge.com)
+- [TECPRESSO](https://tecpresso.co.jp/)
+- [Runtime Converter](http://runtimeconverter.com/)
+- [WebL'Agence](https://weblagence.com/)
+- [Invoice Ninja](https://www.invoiceninja.com)
+- [iMi digital](https://www.imi-digital.de/)
+- [Earthlink](https://www.earthlink.ro/)
+- [Steadfast Collective](https://steadfastcollective.com/)
+- [We Are The Robots Inc.](https://watr.mx/)
+- [Understand.io](https://www.understand.io/)
+- [Abdel Elrafa](https://abdelelrafa.com)
+- [Hyper Host](https://hyper.host)
 
-While the project design is simple, it provides an excellent way to explore Laravel. You will also know how to construct your app structure the right way.
+## Contributing
 
-## Chapter 4 - Building A Blog Application
-Throughout the projects in this book up to this point, we've learned many things. It's time to use our skills to build a complete blog system. You will learn to make an admin control panel to create and manage your posts, users, roles, permissions, etc.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Chapter 5 - Deploying Our Laravel Applications
-Finally, we learn how to create our own web server and deploy our Laravel app to it. Launching your first Laravel 5 application is that easy!
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
