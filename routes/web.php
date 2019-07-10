@@ -15,16 +15,19 @@ Route::get('/', 'PagesController@home');
 
 Route::get('/about', 'PagesController@about');
 
-Route::prefix('tickets')->group(function (){
-    Route::prefix('{slugs}')->group(function (){
-        Route::get('edit','TicketsController@edit');
-        Route::post('edit','TicketsController@update');
-        Route::post('delete','TicketsController@destroy');
-    });
-    Route::get('{slug?}', 'TicketsController@show');
-});
 Route::get('/contact', 'TicketsController@create');
 
 Route::post('/contact', 'TicketsController@store');
+   
+Route::prefix('tickets')->group(function (){
+    Route::get('/', 'TicketsController@index');  
 
-Route::get('/tickets', 'TicketsController@index');
+    Route::prefix('{slug?}')->group(function (){
+        Route::get('/', 'TicketsController@show');
+
+        Route::get('/edit','TicketsController@edit');
+        Route::post('/edit','TicketsController@update');
+        Route::post('/delete','TicketsController@destroy');
+    });
+});
+Route::post('/comment', 'CommentsController@newComment');
