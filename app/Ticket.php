@@ -8,7 +8,6 @@ use App\Comment;
 
 class Ticket extends Model
 {
-
     protected $fillable = [
         'title', 
         'content', 
@@ -23,7 +22,6 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class);
     }
-
     public function comment()
     {
         return $this->hasMany(Comment::class, 'post_id');

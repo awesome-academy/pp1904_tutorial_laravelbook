@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -12,7 +11,6 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
     'head' => 'Learning Laravel 5',
     'content' => 'Building Practical Applications',
 ];

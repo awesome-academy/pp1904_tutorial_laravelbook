@@ -40,7 +40,6 @@ class TicketsController extends Controller
     public function store(TicketFormRequest $request)
     {
         $slug = uniqid();
-
         $ticket = new Ticket([
             'title' => $request->get('title'),
             'content' => $request->get('content'),
@@ -48,7 +47,6 @@ class TicketsController extends Controller
         ]);
 
         $ticket->save();
-
         $data = array(
             'ticket' => $slug,
         );
@@ -71,7 +69,6 @@ class TicketsController extends Controller
     public function show($slug)
     {
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
-
         $comments = $ticket->comment()->get();
         return view('tickets.show', compact('ticket', 'comments'));
     }

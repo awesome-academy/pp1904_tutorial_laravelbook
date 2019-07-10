@@ -8,7 +8,6 @@
             <h5 class="float-left">{{ $ticket->title }}</h5>
             <div class="clearfix"></div>
         </div>
-
         <div class="card-body">
             <p> <strong>Status</strong>: {{ $ticket->status ? config('ticket.PEND') : config('ticket.ANS') }}</p>
             <p> {{ $ticket->content }} </p>
@@ -62,7 +61,6 @@
             </fieldset>
         </form>
     </div>
-    
 </div>
 
 @endsection
