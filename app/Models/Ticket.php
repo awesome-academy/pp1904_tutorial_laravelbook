@@ -33,4 +33,24 @@ class Ticket extends Model
 	{
 	    return $this->hasMany(Comment::class, 'post_id');
 	}
+
+	public function scopeCreateTicket($query, $request, $slug)
+	{
+		return $query->insert([
+			'title' => $request->get('title'),
+			'content' => $request->get('content'),
+			'slug' => $slug,
+		]);
+	}
+
+	public function scopeUpdateTicket($query, $slug, $request)
+	{
+		return $query->whereSlug($slug)->update([
+			'title' => $request->get('title'),
+			'content' => $request->get('content'),
+			'status' => ($request->get('status') != null) 
+				? config('ticket.statusOff') 
+				: config('ticket.statusOn'),
+		]);
+	}
 }

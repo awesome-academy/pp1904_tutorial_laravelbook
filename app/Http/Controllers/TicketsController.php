@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Helpers\Helper;
 use Illuminate\Http\Request;
 use App\Http\Requests\TicketFormRequest;
-use Illuminate\Support\Facades\Mail;
 
 class TicketsController extends Controller
 {
@@ -40,23 +40,14 @@ class TicketsController extends Controller
     public function store(TicketFormRequest $request)
     {   
         $slug = uniqid();
-        $ticket = new Ticket([
-            'title' => $request->get('title'),
-            'content' => $request->get('content'),
-            'slug' => $slug
-        ]);
-
-        $ticket->save();
-            
-        $data = [
+        Ticket::createTicket($request, $slug);
+        Helper::sendMailLaravel([
+            'fromEmail' => 'quyen@gmai.com',
+            'toEmail' => 'quyen123@gmail.com',
+            'title' => $request->title,
+            'content' => $request->content,
             'ticket' => $slug,
-        ];
-
-        Mail::send('emails.ticket', $data, function ($message) {
-            $message->from('quyen.luongvan13@gmail.com', 'Learning Laravel');
-
-            $message->to('quyen.luongvan13@gmail.com')->subject('There is a new ticket!');
-        });
+        ]);
 
         return redirect('/contact')->with('status', 'Your ticket has been created! Its unique id is: '.$slug);
     }
@@ -96,15 +87,7 @@ class TicketsController extends Controller
      */
     public function update($slug, TicketFormRequest $request)
     {
-        $ticket = Ticket::whereSlug($slug)->firstOrFail();
-        $ticket->title = $request->get('title');
-        $ticket->content = $request->get('content');
-        if($request->get('status') != null) {
-            $ticket->status = config('ticket.statusOff');
-        } else {
-            $ticket->status = config('ticket.statusOn');
-        }
-        $ticket->save();
+        Ticket::updateTicket($slug, $request);
 
         return redirect(action('TicketsController@edit', $ticket->slug))->with('status', 'The ticket '.$slug.' has been updated!');
 
