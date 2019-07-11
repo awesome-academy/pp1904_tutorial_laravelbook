@@ -14,4 +14,12 @@ class Comment extends Model
 	{
     	return $this->belongsTo('App\Models\Ticket');
 	}
+
+	public function scopeNewComment($query, $request)
+	{
+		return $query->insert([
+			'post_id' => $request->post_id,
+            'content' => $request->content,
+		]);
+	}
 }

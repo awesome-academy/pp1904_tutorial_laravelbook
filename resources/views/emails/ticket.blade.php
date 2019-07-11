@@ -7,7 +7,7 @@
 <h2>Learning Laravel!</h2>
 
 <div>
-    You have a new ticket. The ticket id is {{ $ticket }}!
+    You have a new ticket. The ticket id is {{$data['ticket'] }}!
 </div>
 
 </body>
