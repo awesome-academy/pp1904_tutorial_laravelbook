@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\TicketFormRequest;
 use App\Models\Ticket;
-use Illuminate\Support\Facades\Mail;
+use App\Helpers\Helper;
 
 class TicketsController extends Controller
 {
@@ -16,7 +16,7 @@ class TicketsController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::all();
+        $tickets = Ticket::All();
 
         return view('tickets.index', ['tickets'=> $tickets]);
     }
@@ -40,23 +40,14 @@ class TicketsController extends Controller
     public function store(Request $request)
     {
         $slug = uniqid();
-        $ticket = new Ticket([
-            'title' => $request->get('title'),
-            'content' => $request->get('content'),
-            'slug' => $slug
-        ]);
-
-        $ticket->save();
-
-        $data = [
+        Ticket::createTicket($request, $slug);
+        Helper::sendMailLaravel([
+            'fromEmail' => 'hnam.vuong@gmai.com',
+            'toEmail' => 'hnam.vuong@gmail.com',
+            'title' => $request->title,
+            'content' => $request->content,
             'ticket' => $slug,
-        ];
-
-        Mail::send('emails.ticket', $data, function ($message) {
-            $message->from('hnam.vuong@gmail.com', 'Learning Laravel');
-
-            $message->to('hnam.vuong@gmail.com')->subject('There is a new ticket!');
-        });
+        ]);
 
         return redirect('/contact')->with('status', 'Your ticket has been created! Its unique id is: '.$slug);
     }
@@ -73,7 +64,6 @@ class TicketsController extends Controller
         $comments = $ticket->comments()->get();
         
         return view('tickets.show', compact('ticket', 'comments'));
-        // action('TicketsController@show', $ticket->slug);
     }
 
     /**
@@ -98,17 +88,10 @@ class TicketsController extends Controller
      */
     public function update(Request $request, $slug)
     {
-        $ticket = Ticket::whereSlug($slug)->firstOrFail();
-        $ticket->title = $request->get('title');
-        $ticket->content = $request->get('content');
-        if($request->get('status') != null) 
-        {
-            $ticket->status = config('my_config.ZERO');
-        } else {
-            $ticket->status = config('my_config.ZERO1');
-        }
-        $ticket->save();
-        return redirect(action('TicketsController@edit', $ticket->slug))->with('status', 'The ticket '.$slug.' has been updated!');
+        Ticket::updateTicketWithSlug($request, $slug);
+
+        return redirect(action('TicketsController@edit', $slug))
+            ->with('status', 'The ticket ' . $slug . ' has been updated!');
     }
 
     /**

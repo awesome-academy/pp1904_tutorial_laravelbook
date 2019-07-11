@@ -18,4 +18,29 @@ class Ticket extends Model
 	{
 	    return $this->hasMany('App\Models\Comment', 'post_id');
 	}
+
+    public function scopeAll($query)
+    {
+        return $query->all();
+    }
+
+    public function scopeCreateTicket($query, $request, $slug)
+    {
+        return $query->insert([
+            'title' => $request->get('title'),
+            'content' => $request->get('content'),
+            'slug' => $slug,
+        ]);
+    }
+
+    public function scopeUpdateTicketWithSlug($query, $request, $slug)
+    {
+        return $query->whereSlug($slug)->firstOrFail()->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'status' => $request->status != null 
+                ? config('my_config.ZERO') 
+                : config('my_config.ZERO1'),
+        ]);
+    }
 }

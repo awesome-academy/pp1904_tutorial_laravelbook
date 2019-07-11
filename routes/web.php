@@ -38,3 +38,7 @@ Route::post('/comment', 'CommentsController@newComment');
 
 Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('users/register', 'Auth\RegisterController@register');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
