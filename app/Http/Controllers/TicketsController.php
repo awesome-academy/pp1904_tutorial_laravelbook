@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TicketFormRequest;
 use Illuminate\Http\Request;
 use App\Ticket;
 use Illuminate\Support\Facades\Mail;
+use App\Helpers\helper;
+use App\Http\Requests\TicketFormRequest;
 
 class TicketsController extends Controller
 {
@@ -14,6 +15,7 @@ class TicketsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $tickets = Ticket::all();
@@ -26,6 +28,7 @@ class TicketsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         return view('tickets.create');
@@ -37,25 +40,20 @@ class TicketsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(TicketFormRequest $request)
     {
         $slug = uniqid();
-        $ticket = new Ticket([
-            'title' => $request->get('title'),
-            'content' => $request->get('content'),
-            'slug' => $slug
-        ]);
 
-        $ticket->save();
-        $data = array(
+        $ticket = Ticket::createTicket($request, $slug);
+
+        Helper::sendMailLaravel([
+            'fromEmail' => 'danchinhchu@gmai.com',
+            'toEmail' => 'nhudanmkt@gmail.com',
+            'title' => $request->title,
+            'content' => $request->content,
             'ticket' => $slug,
-        );
-
-        Mail::send('email.ticket', $data, function ($message) {
-            $message->from('danchinhchu@gmail.com', 'Learning Laravel');
-
-            $message->to('nhudanmkt@gmail.com')->subject('There is a new ticket!');
-        });
+        ]);
 
         return redirect('/contact')->with('status', 'Your ticket has been created! Its unique id is: '.$slug);
     }
@@ -66,10 +64,12 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function show($slug)
     {
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
         $comments = $ticket->comment()->get();
+
         return view('tickets.show', compact('ticket', 'comments'));
     }
 
@@ -79,6 +79,7 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit($slug)
     {
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
@@ -93,21 +94,13 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($slug, TicketFormRequest $request)
+
+    public function update(TicketFormRequest $request, $slug)
     {
-        $ticket = Ticket::whereSlug($slug)->firstOrFail();
-        $ticket->title = $request->get('title');
-        $ticket->content = $request->get('content');
+        $ticket = Ticket::updateTicket($request, $slug);
 
-        if($request->get('status') != null) {
-            $ticket->status = config('ticket.STATUSOFF');
-        } else {
-            $ticket->status = config('ticket.STATUSON');
-        }
-        $ticket->save();
-
-        return redirect(action('TicketsController@edit', $ticket->slug))
-            ->with('status', 'The ticket '.$slug.' has been updated!');
+        return redirect(action('TicketsController@edit', $slug))
+            ->with('status', trans('update.update', ['slug' => $slug]));
     }
 
     /**
@@ -116,6 +109,7 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($slug)
     {
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
