@@ -19,6 +19,7 @@ class Ticket extends Model
 	protected $guarded = [
 		'id',
 	];
+	
     public function user()
 	{
 	    return $this->belongsTo(User::class);
@@ -31,7 +32,7 @@ class Ticket extends Model
 
 	public function comments()
 	{
-	    return $this->hasMany(Comment::class, 'post_id');
+	    return $this->morphMany(Comment::class, 'post');
 	}
 
 	public function scopeCreateTicket($query, $request, $slug)
