@@ -5,6 +5,8 @@ namespace App;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use App\Comment;
+use Illuminate\Http\Request;
+use App\Http\Requests\TicketFormRequest;
 
 class Ticket extends Model
 {
@@ -25,5 +27,25 @@ class Ticket extends Model
     public function comment()
     {
         return $this->hasMany(Comment::class, 'post_id');
+    }
+
+    public function scopeCreateTicket($query, $request, $slug)
+    {
+        return $query->insert([
+            'title' => $request->get('title'),
+            'content' => $request->get('content'),
+            'slug' => $slug,
+        ]);
+    }
+
+    public function scopeUpdateTicket($query, $request, $slug)
+    {
+        return $query->where('slug', $slug)->update([
+            'title' => $request->get('title'),
+            'content' => $request->get('content'),
+            'status' => $request->get('status') != null 
+                ? config('ticket.STATUSOFF') 
+                : config('ticket.STATUSON'),
+        ]);
     }
 }
