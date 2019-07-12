@@ -13,12 +13,11 @@ return [
     |
     */
 
-    'larabook' => 'Larabook',
-    'home' => 'Home',
-    'about' => 'About',
-    'contact' => 'Contact',
-    'member' => 'Member',
-    'register' => 'Register',
-    'login' => 'Login',
-    'logout' => 'Logout',
+    'register' => 'Register an account',
+    'name' => 'Name',
+    'email' => 'Email',
+    'password' => 'Password',
+    'confirm' => 'Confirm',
+    'cancel' => 'Cancel',
+    'submit' => 'Submit',
 ];

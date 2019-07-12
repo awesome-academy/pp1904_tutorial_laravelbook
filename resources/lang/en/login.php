@@ -13,12 +13,8 @@ return [
     |
     */
 
-    'larabook' => 'Larabook',
-    'home' => 'Home',
-    'about' => 'About',
-    'contact' => 'Contact',
-    'member' => 'Member',
-    'register' => 'Register',
     'login' => 'Login',
-    'logout' => 'Logout',
+    'email' => 'Email',
+    'password' => 'Password',
+    'remember' => 'Remember Me?',
 ];
