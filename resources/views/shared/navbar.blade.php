@@ -20,8 +20,12 @@
                     {{ trans('navbar.member') }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    @if (Auth::check())
+                    <a class="dropdown-item" href="/users/logout">{{ trans('navbar.logout') }}</a>
+                    @else
                     <a class="dropdown-item" href="/users/register">{{ trans('navbar.register') }}</a>
                     <a class="dropdown-item" href="/users/login">{{ trans('navbar.login') }}</a>
+                    @endif
                 </div>
             </li>
         </ul>
