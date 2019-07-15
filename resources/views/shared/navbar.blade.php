@@ -10,6 +10,7 @@
                 <a class="nav-link" href="/">{{ trans('navbar.home') }}<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/blog">{{ trans('navbar.blog') }}</a>
                 <a class="nav-link" href="/about">{{ trans('navbar.about') }}</a>
             </li>
             <li class="nav-item">
