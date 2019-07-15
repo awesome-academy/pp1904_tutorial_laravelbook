@@ -20,6 +20,12 @@ class Comment extends Model
 		return $query->insert([
 			'post_id' => $request->post_id,
             'content' => $request->content,
+            'post_type' => $request->post_type,
 		]);
+	}
+
+	public function post()
+	{
+		return $this->morphTo();
 	}
 }
