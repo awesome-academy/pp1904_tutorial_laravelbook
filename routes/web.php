@@ -38,5 +38,27 @@ Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('users/register', 'Auth\RegisterController@register');
 Route::get('users/logout', 'Auth\LoginController@logout');
 
-Route::get('users/login', 'Auth\LoginController@showLoginForm');
+Route::get('users/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('users/login', 'Auth\LoginController@login');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'], function (){
+    Route::get('users', [ 
+        'as' => 'admin.user.index', 
+        'uses' => 'UsersController@index',
+    ]);
+    Route::get('roles', [ 
+        'as' => 'admin.role',
+        'uses' => 'RolesController@index',
+    ]);
+
+    Route::get('roles/create', [
+        'as' => 'admin.role.create',
+        'uses' => 'RolesController@create',
+    ]);
+    Route::post('roles/create', 'RolesController@store');
+
+    Route::get('users/{id?}/edit', 'UsersController@edit');
+    Route::post('users/{id?}/edit','UsersController@update');
+
+    Route::get('/', 'PagesController@home');
+});

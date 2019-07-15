@@ -21,6 +21,9 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     @if (Auth::check())
+                    @role('manager')
+                    <a class="dropdown-item" href="/admin">{{ trans('navbar.admin') }}</a>
+                    @endrole
                     <a class="dropdown-item" href="/users/logout">{{ trans('navbar.logout') }}</a>
                     @else
                     <a class="dropdown-item" href="/users/register">{{ trans('navbar.register') }}</a>
