@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Comment;
 
 class Ticket extends Model
 {
@@ -16,7 +17,7 @@ class Ticket extends Model
 
     public function comments()
 	{
-	    return $this->hasMany('App\Models\Comment', 'post_id');
+	    return $this->morphMany(Comment::class, 'post');
 	}
 
     public function scopeAll($query)

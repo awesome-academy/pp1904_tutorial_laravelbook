@@ -13,6 +13,10 @@
                 <a class="nav-link" href="/about">{{ trans('blog.about') }}</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/blog">{{ trans('blog.blog') }}</a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="/contact">{{ trans('blog.contact') }}</a>
             </li>
             <li class="nav-item dropdown">
@@ -20,8 +24,23 @@
                     {{ trans('blog.member') }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/users/register">{{ trans('blog.register') }}</a>
-                    <a class="dropdown-item" href="/users/login">{{ trans('blog.login') }}</a>
+                    @if (Auth::check())
+                        @role('manager')
+                        <ul>
+                        <li class="nav-item"><a href="/admin">Admin</a></li>
+                        </ul>
+                        @endrole
+                        <ul>
+                        <li class="nav-item"><a href="/users/logout">Logout</a></li>
+                        </ul>
+                    @else
+                    <ul>
+                        <li class="nav-item"><a href="/users/register">{{ trans('blog.register') }}</a></li>
+                    </ul>
+                    <ul>
+                        <li class="nav-item"><a href="/users/login">{{ trans('blog.login') }}</a></li>
+                    </ul>
+                    @endif
                 </div>
             </li>
         </ul>

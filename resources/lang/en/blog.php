@@ -3,10 +3,12 @@
 return [
 	'home' =>'Home',
 	'about' => 'About',
+	'blog' => 'Blog',
 	'contact' => 'Contact',
 	'member' => 'Member',
 	'register' => 'Register',
 	'login' => 'Login',
+	'logout' =>'Logout',
 
 	'menu_home' => [
 		'title' => 'Home',

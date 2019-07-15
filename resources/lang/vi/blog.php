@@ -3,10 +3,12 @@
 return [
 	'home' =>'Trang chủ',
 	'about' => 'Về chúng tôi',
+	'blog' => 'Blog',
 	'contact' => 'Liên hệ',
 	'member' => 'Thành viên',
 	'register' => 'Đăng ký',
 	'login' => 'Đăng nhập',
+	'logout' => 'Đăng xuất',
 
 	'menu_home' => [
 		'title' => 'Trang chủ',
