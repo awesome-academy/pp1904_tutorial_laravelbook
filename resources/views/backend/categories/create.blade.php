@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'Create A New Role')
+@section('title', 'Create A New Category')
 @section('content')
 
 <div class="container col-md-8 col-md-offset-2">
@@ -8,7 +8,6 @@
             @foreach ($errors->all() as $error)
             <p class="alert alert-danger">{{ $error }}</p>
             @endforeach
-
             @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
@@ -16,7 +15,7 @@
             @endif
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <fieldset>
-                <legend>Create a new role</legend>
+                <legend>Create a new category</legend>
                 <div class="form-group">
                     <label for="name" class="col-lg-2 control-label">Name</label>
                     <div class="col-lg-10">

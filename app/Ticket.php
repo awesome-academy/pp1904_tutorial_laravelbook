@@ -24,9 +24,10 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function comment()
+
+    public function comments()
     {
-        return $this->hasMany(Comment::class, 'post_id');
+        return $this->morphMany(Comment::class, 'post');
     }
 
     public function scopeCreateTicket($query, $request, $slug)

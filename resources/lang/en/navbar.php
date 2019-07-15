@@ -22,4 +22,5 @@ return [
     'login' => 'Login',
     'logout' => 'Logout',
     'admin' => 'Admin',
+    'blog' => 'Blog',
 ];
